@@ -1,6 +1,6 @@
-import { View, StyleSheet, FlatList } from "react-native";
-import Post from "../components/Post";
+import { StyleSheet } from "react-native";
 import { DATA } from "../data";
+import PostList from "../components/PostList";
 
 const BookedScreen = ({navigation}) => {
 
@@ -8,20 +8,10 @@ const BookedScreen = ({navigation}) => {
         navigation.navigate('Post', { postId: post.id, date: post.date, booked: post.booked })
     }
 
+    const data = DATA.filter(item => item.booked);
+
     return (
-        <View style={styles.center}>
-            <FlatList
-                data={DATA.filter(item => item.booked)}
-                keyExtractor={post => post.id.toString()}
-                renderItem={({item}) => <Post post={item} onOpen={onPostHandler}/>}
-            />
-        </View>
+        <PostList data={data} onOpen={onPostHandler}/>
     )
 }
 export default BookedScreen;
-
-const styles = StyleSheet.create({
-    wrapper: {
-        padding: 10
-    }
-})

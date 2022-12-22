@@ -1,6 +1,6 @@
-import { View, Text, StyleSheet, Button, FlatList } from "react-native";
-import Post from "../components/Post";
+import { StyleSheet } from "react-native";
 import { DATA } from "../data";
+import PostList from "../components/PostList";
 
 const MainScreen = ({navigation}) => {
 
@@ -9,19 +9,7 @@ const MainScreen = ({navigation}) => {
     }
 
     return (
-        <View style={styles.center}>
-            <FlatList
-                data={DATA}
-                keyExtractor={post => post.id.toString()}
-                renderItem={({item}) => <Post post={item} onOpen={onPostHandler}/>}
-            />
-        </View>
+        <PostList data={DATA} onOpen={onPostHandler}/>
     )
 }
 export default MainScreen;
-
-const styles = StyleSheet.create({
-    wrapper: {
-        padding: 10
-    }
-})

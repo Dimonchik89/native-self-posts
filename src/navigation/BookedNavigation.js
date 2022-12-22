@@ -8,7 +8,8 @@ import PostScreen from "../screens/PostScreen";
 
 const Stack = createNativeStackNavigator()
 
-const BookedNavigation = () => {
+
+const BookedNavigation = ({navigation}) => {
 
     return (
         <Stack.Navigator>
@@ -19,7 +20,7 @@ const BookedNavigation = () => {
                     title: "Booked",
                     headerLeft: () => (
                         <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
-                            <Item title='Toggle Drawer' iconName='ios-menu' onPress={() => console.log('press photo')}/>
+                            <Item title='Toggle Drawer' iconName='ios-menu' onPress={() => navigation.toggleDrawer()}/>
                         </HeaderButtons>
                     ),
                     headerStyle: {

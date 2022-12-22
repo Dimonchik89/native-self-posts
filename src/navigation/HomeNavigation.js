@@ -9,23 +9,23 @@ import PostScreen from '../screens/PostScreen';
 
 const Stack = createNativeStackNavigator();
 
-const HomeNavigator = () => {
+const HomeNavigator = ({navigation}) => {
 
     return (
         <Stack.Navigator>
-            <Stack.Screen a
+            <Stack.Screen 
                 name="Main" 
                 component={MainScreen} 
                 options={{ 
                     title: 'My home',
                     headerRight: () => (
                         <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
-                            <Item title='Take photo' iconName='camera' onPress={() => console.log('press photo')}/>
+                            <Item title='Take photo' iconName='camera' onPress={() => navigation.navigate("Create")}/>
                         </HeaderButtons>
                     ),
                     headerLeft: () => (
                         <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
-                            <Item title='Toggle Drawer' iconName='ios-menu' onPress={() => console.log('press photo')}/>
+                            <Item title='Toggle Drawer' iconName='ios-menu' onPress={() => navigation.toggleDrawer()}/>
                         </HeaderButtons>
                     ),
                     headerStyle: {
